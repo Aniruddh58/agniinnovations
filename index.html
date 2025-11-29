@@ -33,7 +33,17 @@
     }
     .branding img {
       height: 50px;
-      filter: brightness(0) invert(1); /* makes logo appear white to match header */
+      /* removed filter so logo shows in original colors */
+    }
+    .ai-text {
+      font-size: 0.8em;
+      margin-left: 8px;
+      padding: 3px 8px;
+      background: #F4A261;
+      color: #0A192F;
+      border-radius: 5px;
+      font-weight: bold;
+      letter-spacing: 1px;
     }
     nav a {
       color: #F4A261;
@@ -128,7 +138,7 @@
       <a href="index.html">
         <img src="a.png" alt="Agni Innovations Logo">
       </a>
-      <h1>Agni Innovations</h1>
+      <h1>Agni Innovations <span class="ai-text">AI</span></h1>
     </div>
     <nav>
       <a href="#">Home</a>
