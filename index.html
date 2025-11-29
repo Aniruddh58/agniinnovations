@@ -18,10 +18,19 @@
       padding: 25px 40px;
       text-align: center;
     }
+    header .branding {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+    }
     header h1 {
       margin: 0;
-      font-size: 2.8em;
+      font-size: 2.4em;
       letter-spacing: 2px;
+    }
+    header img {
+      height: 60px;
     }
     nav {
       margin-top: 12px;
@@ -115,7 +124,12 @@
 </head>
 <body>
   <header>
-    <h1>Agni Innovations</h1>
+    <div class="branding">
+      <a href="index.html">
+        <img src="agniiinovationsLogo.png" alt="Agni Innovations Logo">
+      </a>
+      <h1>Agni Innovations</h1>
+    </div>
     <nav>
       <a href="#">Home</a>
       <a href="#about">About Us</a>
