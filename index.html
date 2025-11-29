@@ -30,20 +30,19 @@
       font-size: 2em;
       letter-spacing: 2px;
       color: #F9FAFB;
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
-    .branding img {
-      height: 50px;
-      /* removed filter so logo shows in original colors */
-    }
-    .ai-text {
-      font-size: 0.8em;
-      margin-left: 8px;
-      padding: 3px 8px;
+    .ai-box {
+      font-size: 1em;
+      padding: 8px 14px;
       background: #F4A261;
       color: #0A192F;
-      border-radius: 5px;
+      border-radius: 6px;
       font-weight: bold;
       letter-spacing: 1px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
     }
     nav a {
       color: #F4A261;
@@ -135,10 +134,8 @@
 <body>
   <header>
     <div class="branding">
-      <a href="index.html">
-        <img src="a.png" alt="Agni Innovations Logo">
-      </a>
-      <h1>Agni Innovations <span class="ai-text">AI</span></h1>
+      <span class="ai-box">AI</span>
+      <h1>Agni Innovations</h1>
     </div>
     <nav>
       <a href="#">Home</a>
