@@ -6,9 +6,7 @@
   <title>Agni Innovations | Software & Manufacturing</title>
 
   <style>
-    html {
-      scroll-behavior: smooth;
-    }
+    html { scroll-behavior: smooth; }
 
     body {
       font-family: 'Segoe UI', Arial, sans-serif;
@@ -30,11 +28,7 @@
       z-index: 1000;
     }
 
-    .branding {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-    }
+    .branding { display: flex; align-items: center; gap: 15px; }
 
     .branding h1 {
       margin: 0;
@@ -54,7 +48,7 @@
       border-radius: 6px;
       font-weight: bold;
       letter-spacing: 1px;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
     }
 
     nav a {
@@ -72,7 +66,7 @@
     }
 
     .hero {
-      background: linear-gradient(rgba(10, 25, 47, 0.7), rgba(10, 25, 47, 0.7)),
+      background: linear-gradient(rgba(10,25,47,0.7), rgba(10,25,47,0.7)),
         url('banner.jpg') no-repeat center center/cover;
       height: 420px;
       display: flex;
@@ -88,10 +82,7 @@
       line-height: 1.4;
     }
 
-    section {
-      padding: 50px 20px;
-      text-align: center;
-    }
+    section { padding: 50px 20px; text-align: center; }
 
     section h2 {
       color: #0A192F;
@@ -117,19 +108,15 @@
       background: #fff;
       padding: 25px;
       border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
       width: 300px;
       transition: transform 0.3s ease;
+      cursor: pointer;
     }
 
-    .service:hover {
-      transform: translateY(-8px);
-    }
+    .service:hover { transform: translateY(-8px); }
 
-    .service h3 {
-      color: #F4A261;
-      margin-bottom: 12px;
-    }
+    .service h3 { color: #F4A261; margin-bottom: 12px; }
 
     #about div {
       max-width: 800px;
@@ -138,14 +125,8 @@
       line-height: 1.8;
     }
 
-    #about ul {
-      list-style: none;
-      padding-left: 0;
-    }
-
-    #about li {
-      margin: 8px 0;
-    }
+    #about ul { list-style: none; padding-left: 0; }
+    #about li { margin: 8px 0; }
 
     .contact-wrapper {
       max-width: 900px;
@@ -160,7 +141,7 @@
       background: #ffffff;
       padding: 25px;
       border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
       text-align: left;
     }
 
@@ -192,24 +173,16 @@
       transition: background 0.3s ease;
     }
 
-    .contact-form button:hover {
-      background: #E9C46A;
-    }
+    .contact-form button:hover { background: #E9C46A; }
 
-    .contact-info {
-      text-align: left;
-    }
-
-    .contact-info h3 {
-      color: #F4A261;
-      margin-bottom: 10px;
-    }
+    .contact-info { text-align: left; }
+    .contact-info h3 { color: #F4A261; margin-bottom: 10px; }
 
     .map-embed {
       margin-top: 20px;
       border-radius: 10px;
       overflow: hidden;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
     }
 
     footer {
@@ -231,6 +204,37 @@
     .fade.show {
       opacity: 1;
       transform: translateY(0);
+    }
+
+    /* Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 2000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.6);
+      backdrop-filter: blur(3px);
+    }
+
+    .modal-content {
+      background: #fff;
+      margin: 10% auto;
+      padding: 25px;
+      border-radius: 10px;
+      width: 80%;
+      max-width: 600px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      text-align: left;
+    }
+
+    .close {
+      float: right;
+      font-size: 28px;
+      cursor: pointer;
+      color: #F4A261;
     }
   </style>
 </head>
@@ -270,19 +274,19 @@
     <h2>Our Services</h2>
 
     <div class="services">
-      <div class="service fade">
+      <div class="service fade" onclick="openProduct('software')">
         <h3>💻 Software Solutions</h3>
-        <p>Custom applications, enterprise systems, and digital platforms designed for modern business needs.</p>
+        <p>Custom applications, enterprise systems, and digital platforms.</p>
       </div>
 
-      <div class="service fade">
+      <div class="service fade" onclick="openProduct('manufacturing')">
         <h3>🏭 Manufacturing Excellence</h3>
-        <p>Precision engineering, smart automation, and sustainable production for the future of industry.</p>
+        <p>Precision engineering, automation, and sustainable production.</p>
       </div>
 
-      <div class="service fade">
+      <div class="service fade" onclick="openProduct('integration')">
         <h3>🔗 Innovation & Integration</h3>
-        <p>Seamless integration of software and manufacturing processes to create holistic solutions.</p>
+        <p>End‑to‑end integration of software and industrial systems.</p>
       </div>
     </div>
   </section>
@@ -320,18 +324,20 @@
       <div class="contact-form fade">
         <h3>Send us a message</h3>
 
-        <form id="contactForm">
+        <form id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
           <label>Name</label>
-          <input type="text" placeholder="Your Name" required />
+          <input type="text" name="name" placeholder="Your Name" required />
 
           <label>Email</label>
-          <input type="email" placeholder="you@example.com" required />
+          <input type="email" name="email" placeholder="you@example.com" required />
 
           <label>Message</label>
-          <textarea rows="5" placeholder="Your message..." required></textarea>
+          <textarea name="message" rows="5" placeholder="Your message..." required></textarea>
 
-          <button type="submit">Submit (Demo Only)</button>
+          <button type="submit">Send Message</button>
         </form>
+
+        <p id="formStatus" style="margin-top:10px; font-weight:600;"></p>
       </div>
 
       <div class="contact-info fade">
@@ -357,24 +363,29 @@
     <p>&copy; 2025 Agni Innovations. All Rights Reserved.</p>
   </footer>
 
+  <!-- PRODUCT MODAL -->
+  <div id="productModal" class="modal">
+    <div class="modal-content fade">
+      <span class="close" onclick="closeProduct()">&times;</span>
+      <h2 id="productTitle"></h2>
+      <p id="productDescription"></p>
+    </div>
+  </div>
+
   <!-- JAVASCRIPT -->
   <script>
     // Fade-in animation
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("show");
-        }
+        if (entry.isIntersecting) entry.target.classList.add("show");
       });
     });
-
     document.querySelectorAll(".fade").forEach(el => observer.observe(el));
 
     // Active nav highlight
     document.addEventListener("scroll", () => {
       const sections = document.querySelectorAll("section, .hero");
       const navLinks = document.querySelectorAll("nav a");
-
       let current = "";
 
       sections.forEach(section => {
@@ -390,11 +401,64 @@
       });
     });
 
-    // Fake contact form submission
-    document.getElementById("contactForm").addEventListener("submit", function(e) {
+    // Product modal
+    function openProduct(type) {
+      const modal = document.getElementById("productModal");
+      const title = document.getElementById("productTitle");
+      const desc = document.getElementById("productDescription");
+
+      const products = {
+        software: {
+          title: "Software Solutions",
+          desc: "We build enterprise-grade applications, mobile apps, cloud systems, and AI-powered platforms tailored to your business needs. Our expertise includes .NET, Angular, cloud-native systems, automation tools, and secure API-driven architectures."
+        },
+        manufacturing: {
+          title: "Manufacturing Excellence",
+          desc: "Our manufacturing division specializes in precision engineering, CNC machining, robotics integration, smart factory automation, and sustainable production workflows designed for Industry 4.0."
+        },
+        integration: {
+          title: "Innovation & Integration",
+          desc: "We connect software with industrial hardware, IoT devices, sensors, and automation systems to create unified, intelligent, and scalable digital ecosystems."
+        }
+      };
+
+      title.innerText = products[type].title;
+      desc.innerText = products[type].desc;
+
+      modal.style.display = "block";
+    }
+
+    function closeProduct() {
+      document.getElementById("productModal").style.display = "none";
+    }
+
+    window.onclick = function(event) {
+      const modal = document.getElementById("productModal");
+      if (event.target === modal) modal.style.display = "none";
+    };
+
+    // Contact form submission
+    document.getElementById("contactForm").addEventListener("submit", async function(e) {
       e.preventDefault();
-      alert("✅ Thank you! Your message has been received (demo only).");
-      this.reset();
+
+      const form = e.target;
+      const status = document.getElementById("formStatus");
+      const data = new FormData(form);
+
+      const response = await fetch(form.action, {
+        method: form.method,
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (response.ok) {
+        status.innerHTML = "✅ Your message has been sent successfully!";
+        status.style.color = "green";
+        form.reset();
+      } else {
+        status.innerHTML = "❌ Something went wrong. Please try again.";
+        status.style.color = "red";
+      }
     });
   </script>
 
