@@ -65,8 +65,10 @@
       transition: color 0.3s ease;
     }
 
-    nav a:hover {
+    nav a:hover,
+    nav a.active {
       color: #E9C46A;
+      text-decoration: underline;
     }
 
     .hero {
@@ -218,6 +220,18 @@
       font-size: 0.9em;
       margin-top: 40px;
     }
+
+    /* Fade-in animation */
+    .fade {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.7s ease-out;
+    }
+
+    .fade.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
   </style>
 </head>
 
@@ -238,12 +252,12 @@
   </header>
 
   <!-- HERO -->
-  <div class="hero" id="home">
+  <div class="hero fade" id="home">
     <h2>Igniting Ideas in Software & Manufacturing Excellence</h2>
   </div>
 
   <!-- WELCOME -->
-  <section>
+  <section class="fade">
     <h2>Welcome to Agni Innovations</h2>
     <p>
       We blend cutting-edge software development with advanced manufacturing expertise to deliver
@@ -252,21 +266,21 @@
   </section>
 
   <!-- SERVICES -->
-  <section id="services">
+  <section id="services" class="fade">
     <h2>Our Services</h2>
 
     <div class="services">
-      <div class="service">
+      <div class="service fade">
         <h3>💻 Software Solutions</h3>
         <p>Custom applications, enterprise systems, and digital platforms designed for modern business needs.</p>
       </div>
 
-      <div class="service">
+      <div class="service fade">
         <h3>🏭 Manufacturing Excellence</h3>
         <p>Precision engineering, smart automation, and sustainable production for the future of industry.</p>
       </div>
 
-      <div class="service">
+      <div class="service fade">
         <h3>🔗 Innovation & Integration</h3>
         <p>Seamless integration of software and manufacturing processes to create holistic solutions.</p>
       </div>
@@ -274,7 +288,7 @@
   </section>
 
   <!-- ABOUT -->
-  <section id="about">
+  <section id="about" class="fade">
     <h2>About Us</h2>
     <div>
       <p>
@@ -298,15 +312,15 @@
   </section>
 
   <!-- CONTACT -->
-  <section id="contact">
+  <section id="contact" class="fade">
     <h2>Contact Us</h2>
     <p>Reach out to our team for collaborations, projects, or inquiries.</p>
 
     <div class="contact-wrapper">
-      <div class="contact-form">
+      <div class="contact-form fade">
         <h3>Send us a message</h3>
 
-        <form action="#" method="post">
+        <form id="contactForm">
           <label>Name</label>
           <input type="text" placeholder="Your Name" required />
 
@@ -320,7 +334,7 @@
         </form>
       </div>
 
-      <div class="contact-info">
+      <div class="contact-info fade">
         <h3>Our Details</h3>
         <p><strong>Agni Innovations</strong></p>
         <p>Dummy Address Line 1</p>
@@ -342,6 +356,47 @@
   <footer>
     <p>&copy; 2025 Agni Innovations. All Rights Reserved.</p>
   </footer>
+
+  <!-- JAVASCRIPT -->
+  <script>
+    // Fade-in animation
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("show");
+        }
+      });
+    });
+
+    document.querySelectorAll(".fade").forEach(el => observer.observe(el));
+
+    // Active nav highlight
+    document.addEventListener("scroll", () => {
+      const sections = document.querySelectorAll("section, .hero");
+      const navLinks = document.querySelectorAll("nav a");
+
+      let current = "";
+
+      sections.forEach(section => {
+        const top = section.offsetTop - 150;
+        if (scrollY >= top) current = section.getAttribute("id");
+      });
+
+      navLinks.forEach(link => {
+        link.classList.remove("active");
+        if (link.getAttribute("href") === "#" + current) {
+          link.classList.add("active");
+        }
+      });
+    });
+
+    // Fake contact form submission
+    document.getElementById("contactForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      alert("✅ Thank you! Your message has been received (demo only).");
+      this.reset();
+    });
+  </script>
 
 </body>
 </html>
