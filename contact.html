@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Contact | Agni Innovations Pvt Ltd</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Contact Agni Innovations Pvt Ltd for software and manufacturing technology solutions." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <script src="assets/js/main.js" defer></script>
+</head>
+<body data-page="contact">
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand">
+        <div class="brand-mark">AI</div>
+        <div class="brand-text">
+          <span class="brand-name">Agni Innovations</span>
+          <span class="brand-tagline">Software & Smart Manufacturing</span>
+        </div>
+      </a>
+      <button class="nav-toggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="site-nav">
+        <ul>
+          <li><a href="index.html" data-nav="home">Home</a></li>
+          <li><a href="about.html" data-nav="about">About</a></li>
+          <li><a href="services.html" data-nav="services">Services</a></li>
+          <li><a href="portfolio.html" data-nav="portfolio">Portfolio</a></li>
+          <li><a href="contact.html" data-nav="contact">Contact</a></li>
+        </ul>
+        <button class="theme-toggle" aria-label="Toggle dark mode">
+          <i class="fa-regular fa-moon"></i>
+        </button>
+        <a href="contact.html" class="btn btn-sm btn-primary nav-cta">Request Quote</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <h1>Contact Us</h1>
+        <p>Share your requirements or questions and our team will respond within one business day.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container contact-layout">
+        <div class="card contact-card reveal">
+          <h2>Send us a message</h2>
+          <form id="contactForm" action="https://formspree.io/f/myzrpbln" method="POST">
+            <div class="form-group">
+              <label for="name">Name *</label>
+              <input id="name" name="name" type="text" required />
+            </div>
+            <div class="form-group">
+              <label for="email">Email *</label>
+              <input id="email" name="email" type="email" required />
+            </div>
+            <div class="form-group">
+              <label for="company">Company</label>
+              <input id="company" name="company" type="text" />
+            </div>
+            <div class="form-group">
+              <label for="message">How can we help? *</label>
+              <textarea id="message" name="message" rows="5" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <p id="formStatus" class="form-status"></p>
+          </form>
+        </div>
+
+        <div class="contact-info card reveal">
+          <h2>Our Details</h2>
+          <p><strong>Agni Innovations Pvt Ltd</strong></p>
+          <p>Gomti Nagar, Lucknow, Uttar Pradesh, India</p>
+          <p><i class="fa-solid fa-envelope"></i> business@agniinnovations.in</p>
+          <p><i class="fa-solid fa-phone"></i> +91-00765-40211</p>
+
+          <h3>Office Hours</h3>
+          <p>Monday – Friday: 10:00 AM – 7:00 PM IST</p>
+
+          <h3>Find us on the map</h3>
+          <div class="map-embed">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3558.334816592414!2d80.94616631504573!3d26.846693783155695!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x399bfd3f3a6f0001%3A0x2e6fd4e8e0f1de10!2sLucknow%2C%20Uttar%20Pradesh!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt">
+      <div class="container">
+        <div class="section-header">
+          <h2>Frequently Asked Questions</h2>
+        </div>
+        <div class="faq-list">
+          <div class="faq-item reveal">
+            <button class="faq-question">
+              What is the typical project duration?
+              <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="faq-answer">
+              <p>Smaller projects can take 4–8 weeks, while larger implementations can run for several months. We can also work in ongoing, flexible engagements.</p>
+            </div>
+          </div>
+          <div class="faq-item reveal">
+            <button class="faq-question">
+              Do you provide maintenance and support?
+              <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="faq-answer">
+              <p>Yes. We offer structured support and maintenance plans tailored to your systems and criticality.</p>
+            </div>
+          </div>
+          <div class="faq-item reveal">
+            <button class="faq-question">
+              Can you work with our existing tech stack?
+              <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="faq-answer">
+              <p>In many cases, yes. We often integrate with existing systems and replace components gradually where necessary.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-col">
+        <h4>Agni Innovations Pvt Ltd</h4>
+        <p>Software, AI and smart manufacturing company based in Lucknow, Uttar Pradesh.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Links</h4>
+        <ul>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="portfolio.html">Case Studies</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <p>Email: business@agniinnovations.in</p>
+        <p>Phone: +91-98765-43210</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 Agni Innovations Pvt Ltd.</span>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/919876543210" class="whatsapp-float" target="_blank" rel="noopener">
+    <i class="fa-brands fa-whatsapp"></i>
+  </a>
+</body>
+</html>

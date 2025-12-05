@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Portfolio & Case Studies | Agni Innovations Pvt Ltd</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Selected projects and case studies delivered by Agni Innovations Pvt Ltd." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <script src="assets/js/main.js" defer></script>
+</head>
+<body data-page="portfolio">
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand">
+        <div class="brand-mark">AI</div>
+        <div class="brand-text">
+          <span class="brand-name">Agni Innovations</span>
+          <span class="brand-tagline">Software & Smart Manufacturing</span>
+        </div>
+      </a>
+      <button class="nav-toggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="site-nav">
+        <ul>
+          <li><a href="index.html" data-nav="home">Home</a></li>
+          <li><a href="about.html" data-nav="about">About</a></li>
+          <li><a href="services.html" data-nav="services">Services</a></li>
+          <li><a href="portfolio.html" data-nav="portfolio">Portfolio</a></li>
+          <li><a href="contact.html" data-nav="contact">Contact</a></li>
+        </ul>
+        <button class="theme-toggle" aria-label="Toggle dark mode">
+          <i class="fa-regular fa-moon"></i>
+        </button>
+        <a href="contact.html" class="btn btn-sm btn-primary nav-cta">Request Quote</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <h1>Portfolio & Case Studies</h1>
+        <p>Representative projects that showcase our capabilities.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="portfolio-filters">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="software">Software</button>
+          <button class="filter-btn" data-filter="cloud">Cloud & DevOps</button>
+          <button class="filter-btn" data-filter="manufacturing">Manufacturing</button>
+        </div>
+
+        <div class="grid grid-3 portfolio-grid">
+          <article class="card portfolio-item reveal" data-category="manufacturing">
+            <span class="tag tag-manufacturing">Manufacturing</span>
+            <h3>IoT Production Monitoring</h3>
+            <p>Implemented machine data acquisition and OEE dashboards for an automotive components plant.</p>
+            <ul class="meta-list">
+              <li><strong>Outcome:</strong> 15% reduction in unplanned downtime</li>
+            </ul>
+          </article>
+
+          <article class="card portfolio-item reveal" data-category="software">
+            <span class="tag tag-software">Software</span>
+            <h3>Dealer Management Portal</h3>
+            <p>Built a multi-tenant portal for distributors with order tracking, inventory and reporting.</p>
+            <ul class="meta-list">
+              <li><strong>Outcome:</strong> Faster order processing, improved visibility</li>
+            </ul>
+          </article>
+
+          <article class="card portfolio-item reveal" data-category="cloud">
+            <span class="tag tag-cloud">Cloud</span>
+            <h3>Secure Finance Operations Platform</h3>
+            <p>Delivered a cloud-native system with role-based access, workflows and audit trails.</p>
+            <ul class="meta-list">
+              <li><strong>Outcome:</strong> Improved compliance and process control</li>
+            </ul>
+          </article>
+
+          <article class="card portfolio-item reveal" data-category="software">
+            <span class="tag tag-software">Software</span>
+            <h3>Lab Automation System</h3>
+            <p>Integrated lab instruments into a centralized results and reporting application.</p>
+            <ul class="meta-list">
+              <li><strong>Outcome:</strong> Reduced manual work and errors</li>
+            </ul>
+          </article>
+
+          <article class="card portfolio-item reveal" data-category="manufacturing">
+            <span class="tag tag-manufacturing">Manufacturing</span>
+            <h3>CNC Data Logging</h3>
+            <p>Created a system to log CNC cycle times and tool usage for analytics.</p>
+            <ul class="meta-list">
+              <li><strong>Outcome:</strong> Better planning of tool changes and scheduling</li>
+            </ul>
+          </article>
+
+          <article class="card portfolio-item reveal" data-category="cloud">
+            <span class="tag tag-cloud">Cloud</span>
+            <h3>DevOps Automation</h3>
+            <p>Implemented CI/CD for multiple applications, reducing manual deployment errors.</p>
+            <ul class="meta-list">
+              <li><strong>Outcome:</strong> Faster, safer releases</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section cta-section">
+      <div class="container cta-inner reveal">
+        <div>
+          <h2>Have a specific use case in mind?</h2>
+          <p>Share a bit about your context and we’ll send relevant case studies.</p>
+        </div>
+        <a href="contact.html" class="btn btn-primary">Share your requirements</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-col">
+        <h4>Agni Innovations Pvt Ltd</h4>
+        <p>Software, AI and smart manufacturing company based in Lucknow, Uttar Pradesh.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Links</h4>
+        <ul>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <p>Email: business@agniinnovations.in</p>
+        <p>Phone: +91-98765-43210</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 Agni Innovations Pvt Ltd.</span>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/919876543210" class="whatsapp-float" target="_blank" rel="noopener">
+    <i class="fa-brands fa-whatsapp"></i>
+  </a>
+</body>
+</html>
