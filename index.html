@@ -3,31 +3,103 @@
 <head>
   <meta charset="UTF-8" />
   <title>Agni Innovations Pvt Ltd | Software & Smart Manufacturing</title>
-  <meta name="description" content="Agni Innovations - Software Solutions, Manufacturing Automation, Cloud & AI Services">
+  <meta name="description" content="Agni Innovations Pvt Ltd - Software Solutions, Cloud, AI, and Smart Manufacturing Automation based in Lucknow, India.">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <style>
     :root {
       --primary: #f4a261;
+      --primary-soft: #f6b88a;
+      --accent: #2dd4bf;
       --dark: #0a192f;
       --bg: #f9fafb;
-      --text: #334155;
-      --card: white;
+      --text: #1f2933;
+      --muted: #6b7280;
+      --card: #ffffff;
+      --shadow-soft: 0 10px 30px rgba(15, 23, 42, 0.08);
+      --radius-lg: 14px;
     }
 
     [data-theme="dark"] {
-      --bg: #0f172a;
+      --bg: #020617;
       --text: #e5e7eb;
       --card: #020617;
+      --shadow-soft: 0 10px 30px rgba(15, 23, 42, 0.6);
     }
 
-    * { box-sizing: border-box; scroll-behavior: smooth; }
+    * {
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
 
     body {
       margin: 0;
-      font-family: "Segoe UI", sans-serif;
-      background: var(--bg);
+      font-family: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: radial-gradient(circle at top left, #fef9c3 0, transparent 40%),
+                  radial-gradient(circle at bottom right, #e0f2fe 0, transparent 40%),
+                  var(--bg);
       color: var(--text);
+      line-height: 1.6;
+    }
+
+    a { color: inherit; }
+
+    /* PRELOADER */
+    #preloader {
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(circle at top, #0f172a, #020617);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      z-index: 2000;
+      color: #e5e7eb;
+      transition: opacity 0.5s ease, visibility 0.5s ease;
+    }
+
+    #preloader.hide {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .loader-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 18px;
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+
+    .loader-logo span {
+      background: linear-gradient(135deg, #f97316, #fde047);
+      color: #111827;
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-weight: 800;
+      box-shadow: 0 5px 18px rgba(248, 250, 252, 0.25);
+    }
+
+    .loader-ring {
+      width: 52px;
+      height: 52px;
+      border-radius: 999px;
+      border: 3px solid rgba(248,250,252,0.2);
+      border-top-color: #f97316;
+      animation: spin 1s linear infinite;
+      margin-bottom: 10px;
+    }
+
+    .loader-text {
+      font-size: 0.9rem;
+      color: #9ca3af;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
     }
 
     /* HEADER */
@@ -35,210 +107,1592 @@
       position: sticky;
       top: 0;
       z-index: 1000;
-      padding: 12px 20px;
-      background: var(--dark);
+      padding: 10px 18px;
+      background: rgba(15, 23, 42, 0.96);
+      backdrop-filter: blur(10px);
       display: flex;
       align-items: center;
       justify-content: space-between;
     }
 
-    header h1 {
-      color: white;
-      font-size: 1.4rem;
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-logo {
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      background: radial-gradient(circle at 20% 0, #fed7aa, #f97316);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #111827;
+      font-weight: 900;
+      font-size: 1.1rem;
+      box-shadow: 0 6px 16px rgba(248, 250, 252, 0.3);
+    }
+
+    .brand-text {
+      color: #f9fafb;
+    }
+
+    .brand-text h1 {
+      font-size: 1.25rem;
       margin: 0;
+    }
+
+    .brand-text small {
+      font-size: 0.7rem;
+      color: #9ca3af;
+      text-transform: uppercase;
+      letter-spacing: .14em;
     }
 
     nav {
       display: flex;
+      align-items: center;
       gap: 20px;
     }
 
     nav a {
-      color: var(--primary);
+      color: #e5e7eb;
       text-decoration: none;
-      font-weight: 600;
+      font-size: 0.9rem;
+      font-weight: 500;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      opacity: 0.85;
+      position: relative;
+    }
+
+    nav a::after {
+      content:"";
+      position: absolute;
+      left:0;
+      bottom:-4px;
+      width:0;
+      height:2px;
+      background: linear-gradient(90deg, #f97316, #22c55e);
+      transition: width 0.25s ease;
+    }
+
+    nav a:hover::after,
+    nav a.active::after {
+      width:100%;
+    }
+
+    .theme-toggle, .admin-btn, .menu-toggle {
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,.6);
+      background: rgba(15,23,42,.5);
+      color: #e5e7eb;
+      padding: 6px 10px;
+      font-size: 0.8rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      cursor: pointer;
+    }
+
+    .theme-toggle span { font-size: 1rem; }
+
+    .admin-btn {
+      background: linear-gradient(135deg, rgba(249,115,22,.1), rgba(14,165,233,.1));
+      border-color: rgba(148,163,184,.8);
     }
 
     .menu-toggle {
       display: none;
-      color: white;
-      font-size: 24px;
-      cursor: pointer;
+      font-size: 1.5rem;
+      border-radius: 8px;
+      padding: 4px 8px;
+    }
+
+    /* MOBILE NAV */
+    @media (max-width: 840px) {
+      nav {
+        position: absolute;
+        inset: 58px 14px auto;
+        background: rgba(15,23,42,.98);
+        border-radius: 14px;
+        padding: 14px;
+        flex-direction: column;
+        align-items: flex-start;
+        box-shadow: var(--shadow-soft);
+        display: none;
+      }
+      nav.show { display: flex; }
+      .menu-toggle { display: inline-flex; }
+      .admin-btn { width: 100%; justify-content: center; }
     }
 
     /* HERO */
     .hero {
-      background: linear-gradient(rgba(10,25,47,.85), rgba(10,25,47,.85)),
-              url("https://images.unsplash.com/photo-1581092919534-7e0cdfbb679d") center/cover;
-      color: white;
-      padding: 100px 20px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      gap: 40px;
+      max-width: 1150px;
+      margin: 40px auto 70px;
+      padding: 0 18px;
+      align-items: center;
+    }
+
+    .hero-text h2 {
+      font-size: clamp(2.1rem, 3vw, 2.7rem);
+      margin: 0 0 10px;
+    }
+
+    .hero-text h2 span {
+      background: linear-gradient(135deg, #f97316, #22c55e);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero-sub {
+      color: var(--muted);
+      font-size: 0.98rem;
+      max-width: 480px;
+    }
+
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 18px 0;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: .16em;
+    }
+
+    .badge {
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.6);
+      background: rgba(15,23,42,0.02);
+    }
+
+    .badge.hot {
+      background: rgba(248,113,22,0.12);
+      border-color: rgba(248,113,22,0.6);
+      color: #9a3412;
+    }
+
+    [data-theme="dark"] .badge.hot {
+      color: #fed7aa;
+    }
+
+    .hero-actions {
+      margin-top: 18px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 10px 20px;
+      font-weight: 600;
+      border-radius: 999px;
+      text-decoration: none;
+      border: 1px solid transparent;
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #f97316, #facc15);
+      color: #111827;
+      box-shadow: 0 12px 30px rgba(248,113,22,0.3);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      border-color: rgba(148,163,184,0.7);
+      color: var(--text);
+    }
+
+    .hero-meta {
+      margin-top: 16px;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .hero-meta strong { color: var(--primary); }
+
+    .hero-visual {
+      background: radial-gradient(circle at 15% 0, #bef264, transparent 40%),
+                  radial-gradient(circle at 90% 80%, #38bdf8, transparent 40%),
+                  var(--card);
+      border-radius: 24px;
+      box-shadow: var(--shadow-soft);
+      padding: 18px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-visual-header {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.8rem;
+      margin-bottom: 6px;
+      color: var(--muted);
+    }
+
+    .hero-kpis {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 10px;
+      font-size: 0.8rem;
+    }
+
+    .kpi {
+      background: rgba(15,23,42,0.03);
+      border-radius: 12px;
+      padding: 10px;
+      border: 1px solid rgba(148,163,184,0.3);
+    }
+
+    .kpi-value {
+      font-size: 1.2rem;
+      font-weight: 700;
+    }
+
+    .kpi-label {
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    .hero-chip {
+      position: absolute;
+      right: 10px;
+      bottom: 10px;
+      background: rgba(15,23,42,0.86);
+      color: #f9fafb;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 0.7rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .hero-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 12px #22c55e;
+    }
+
+    @media (max-width: 840px) {
+      .hero {
+        grid-template-columns: minmax(0,1fr);
+        margin-top: 20px;
+      }
+      .hero-visual { order: -1; }
+    }
+
+    /* GENERIC SECTION STYLES */
+    section {
+      padding: 60px 18px;
+    }
+
+    .section-inner {
+      max-width: 1150px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-size: 1.6rem;
+      margin-bottom: 4px;
       text-align: center;
     }
 
-    .hero h2 { font-size: 2.5rem; }
-
-    .btn {
-      display: inline-block;
-      background: var(--primary);
-      padding: 10px 22px;
-      margin-top: 20px;
-      text-decoration: none;
-      color: black;
-      font-weight: bold;
-      border-radius: 6px;
+    .section-subtitle {
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin-bottom: 28px;
+      text-align: center;
     }
 
-    section { padding: 70px 20px; text-align: center; }
-
-    .services, .stats, .testimonials {
+    .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 25px;
-      max-width: 1100px;
-      margin: auto;
+      gap: 18px;
+    }
+
+    @media (min-width: 768px) {
+      .grid-3 {
+        grid-template-columns: repeat(3, minmax(0,1fr));
+      }
+      .grid-2 {
+        grid-template-columns: repeat(2, minmax(0,1fr));
+      }
     }
 
     .card {
-      background: var(--card);
-      padding: 25px;
-      border-radius: 12px;
-      box-shadow: 0 6px 16px rgba(0,0,0,.1);
-      transition: transform .3s;
+      background: rgba(248,250,252,0.9);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-soft);
+      padding: 18px;
+      text-align: left;
+      border: 1px solid rgba(148,163,184,0.36);
+      position: relative;
+      overflow: hidden;
     }
 
-    .card:hover { transform: translateY(-10px); }
+    [data-theme="dark"] .card {
+      background: radial-gradient(circle at top, rgba(15,23,42,0.9), rgba(15,23,42,0.98));
+    }
+
+    .card h3 {
+      margin-top: 0;
+      margin-bottom: 6px;
+      font-size: 1.05rem;
+    }
+
+    .card p {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 0.75rem;
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: rgba(248,113,22,0.08);
+      color: #c2410c;
+      border: 1px solid rgba(248,113,22,0.4);
+    }
+
+    [data-theme="dark"] .chip {
+      color: #fed7aa;
+    }
+
+    /* SERVICES */
+    .service-icon {
+      font-size: 1.5rem;
+      margin-bottom: 4px;
+    }
+
+    /* STATS STRIP */
+    .stats-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      justify-content: center;
+      margin-top: 25px;
+    }
+
+    .stat-pill {
+      min-width: 120px;
+      padding: 12px 16px;
+      border-radius: 999px;
+      background: rgba(15,23,42,0.03);
+      border: 1px dashed rgba(148,163,184,0.6);
+      font-size: 0.8rem;
+      text-align: center;
+    }
+
+    .stat-pill span {
+      display: block;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    /* PORTFOLIO */
+    .filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .filter-btn {
+      padding: 6px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.7);
+      background: transparent;
+      font-size: 0.8rem;
+      cursor: pointer;
+    }
+
+    .filter-btn.active {
+      background: linear-gradient(135deg, #f97316, #22c55e);
+      border-color: transparent;
+      color: #111827;
+      font-weight: 600;
+    }
+
+    .portfolio-tag {
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    .portfolio-meta {
+      font-size: 0.8rem;
+      margin-top: 6px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .link-small {
+      font-size: 0.78rem;
+      text-decoration: none;
+      color: #2563eb;
+    }
+
+    /* BLOG */
+    .blog-meta {
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+
+    .blog-card h3 {
+      cursor: pointer;
+      text-decoration: underline;
+      text-decoration-color: rgba(37,99,235,0.5);
+    }
+
+    /* CAREERS */
+    .career-card h4 {
+      margin: 4px 0;
+      font-size: 1rem;
+    }
+
+    .career-meta {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .badge-role {
+      font-size: 0.75rem;
+      padding: 3px 7px;
+      border-radius: 999px;
+      background: rgba(59,130,246,0.1);
+      border: 1px solid rgba(59,130,246,0.4);
+      color: #1d4ed8;
+    }
 
     /* CONTACT */
-    .contact {
-      max-width: 900px;
-      margin: auto;
+    .contact-layout {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 25px;
+      gap: 18px;
     }
 
-    input, textarea {
+    @media (min-width: 900px) {
+      .contact-layout {
+        grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      }
+    }
+
+    .contact-form label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .contact-form input,
+    .contact-form textarea,
+    .career-form input,
+    .career-form textarea {
       width: 100%;
-      padding: 12px;
-      margin-top: 8px;
+      padding: 8px 10px;
+      border-radius: 8px;
+      border: 1px solid rgba(148,163,184,0.7);
+      font: inherit;
+      margin-bottom: 12px;
+      background: rgba(248,250,252,0.95);
     }
 
+    [data-theme="dark"] .contact-form input,
+    [data-theme="dark"] .contact-form textarea,
+    [data-theme="dark"] .career-form input,
+    [data-theme="dark"] .career-form textarea {
+      background: rgba(15,23,42,0.8);
+      color: #e5e7eb;
+    }
+
+    .map-embed {
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: var(--shadow-soft);
+    }
+
+    /* TESTIMONIALS (simple slider feel) */
+    .testimonials-row {
+      display: grid;
+      gap: 18px;
+    }
+
+    @media (min-width: 840px) {
+      .testimonials-row {
+        grid-template-columns: 2fr 1fr;
+      }
+    }
+
+    .testimonial-quote {
+      font-size: 0.95rem;
+      font-style: italic;
+    }
+
+    .testimonial-author {
+      font-size: 0.85rem;
+      margin-top: 10px;
+      color: var(--muted);
+    }
+
+    /* ADMIN DASHBOARD (DEMO) */
+    #admin-section {
+      display: none;
+      padding-top: 30px;
+      padding-bottom: 60px;
+    }
+
+    #admin-section.visible {
+      display: block;
+    }
+
+    .admin-banner {
+      font-size: 0.78rem;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(248,113,22,0.1);
+      border: 1px solid rgba(248,113,22,0.5);
+      color: #9a3412;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 16px;
+    }
+
+    .admin-grid {
+      display: grid;
+      gap: 18px;
+    }
+
+    @media (min-width: 900px) {
+      .admin-grid {
+        grid-template-columns: 1.2fr 1.2fr;
+      }
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.8rem;
+      margin-top: 6px;
+    }
+
+    th, td {
+      padding: 6px 8px;
+      border-bottom: 1px solid rgba(148,163,184,0.4);
+      text-align: left;
+    }
+
+    th {
+      font-weight: 600;
+      color: var(--muted);
+      font-size: 0.78rem;
+    }
+
+    .status-pill {
+      padding: 3px 7px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+    }
+
+    .status-open {
+      background: rgba(22,163,74,0.1);
+      color: #15803d;
+      border: 1px solid rgba(22,163,74,0.5);
+    }
+
+    .status-review {
+      background: rgba(59,130,246,0.1);
+      color: #1d4ed8;
+      border: 1px solid rgba(59,130,246,0.5);
+    }
+
+    .admin-metric {
+      font-size: 1.6rem;
+      font-weight: 700;
+    }
+
+    .admin-metric-label {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    /* MODALS  */
+    .modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(15,23,42,0.65);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1500;
+      backdrop-filter: blur(4px);
+    }
+
+    .modal.show {
+      display: flex;
+    }
+
+    .modal-content {
+      background: var(--card);
+      border-radius: 16px;
+      box-shadow: var(--shadow-soft);
+      padding: 18px 18px 16px;
+      max-width: 520px;
+      width: calc(100% - 32px);
+      max-height: 80vh;
+      overflow-y: auto;
+      position: relative;
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .modal-header h3 {
+      margin: 0;
+      font-size: 1.1rem;
+    }
+
+    .modal-close {
+      border: none;
+      background: transparent;
+      font-size: 1.3rem;
+      cursor: pointer;
+      color: var(--muted);
+    }
+
+    .modal-body {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .modal-body p { margin-top: 0; }
+
+    .modal-footer {
+      margin-top: 12px;
+      text-align: right;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    /* ANIMATIONS: REVEAL */
+    .reveal {
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* FOOTER */
     footer {
-      background: var(--dark);
-      color: white;
+      border-top: 1px solid rgba(148,163,184,0.4);
+      padding: 14px 18px 22px;
+      font-size: 0.78rem;
+      color: var(--muted);
       text-align: center;
-      padding: 20px;
     }
 
-    /* WhatsApp */
+    /* WHATSAPP FLOAT */
     .whatsapp {
       position: fixed;
-      bottom: 20px;
-      right: 20px;
+      right: 16px;
+      bottom: 16px;
       background: #25d366;
-      color: white;
-      padding: 12px 16px;
-      border-radius: 50px;
+      color: #ffffff;
+      padding: 10px 14px;
+      border-radius: 999px;
       text-decoration: none;
-      font-weight: bold;
+      font-size: 0.85rem;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 12px 22px rgba(34,197,94,.5);
+      z-index: 1200;
     }
 
-    /* Responsive */
-    @media(max-width: 768px) {
-      nav { display: none; position: absolute; top: 60px; right: 0; background: var(--dark); flex-direction: column; padding: 20px; width: 200px; }
-      nav.show { display: flex; }
-      .menu-toggle { display: block; }
-      .contact { grid-template-columns: 1fr; }
+    .whatsapp span {
+      font-size: 1.05rem;
     }
   </style>
 </head>
 
 <body>
-
-<header>
-  <h1>🔥 Agni Innovations</h1>
-  <div class="menu-toggle" onclick="toggleMenu()">☰</div>
-  <nav id="menu">
-    <a href="#home">Home</a>
-    <a href="#services">Services</a>
-    <a href="#about">About</a>
-    <a href="#contact">Contact</a>
-    <a onclick="toggleTheme()" style="cursor:pointer;">🌗</a>
-  </nav>
-</header>
-
-<section id="home" class="hero">
-  <h2>Igniting Digital & Manufacturing Excellence</h2>
-  <p>Software · Cloud · AI · Smart Automation</p>
-  <a href="#contact" class="btn">Start a Project</a>
-</section>
-
-<section id="services">
-  <h2>Our Services</h2>
-  <div class="services">
-    <div class="card">💻 Software Development<br><small>Web, Mobile, Enterprise Apps</small></div>
-    <div class="card">☁ Cloud Computing<br><small>AWS, Azure, DevOps</small></div>
-    <div class="card">🤖 AI & Automation<br><small>ML, Process Automation</small></div>
-    <div class="card">🏭 Smart Manufacturing<br><small>Industry 4.0, IoT, CNC</small></div>
+  <!-- PRELOADER -->
+  <div id="preloader">
+    <div class="loader-logo">
+      <span>AGNI</span> Innovations Pvt Ltd
+    </div>
+    <div class="loader-ring"></div>
+    <div class="loader-text">Igniting ideas...</div>
   </div>
-</section>
 
-<section>
-  <h2>Our Impact</h2>
-  <div class="stats">
-    <div class="card">10+ Years Experience</div>
-    <div class="card">120+ Projects Delivered</div>
-    <div class="card">30+ Enterprise Clients</div>
-  </div>
-</section>
+  <!-- HEADER -->
+  <header>
+    <div class="brand">
+      <div class="brand-logo">A</div>
+      <div class="brand-text">
+        <h1>Agni Innovations Pvt Ltd</h1>
+        <small>Software · Cloud · Smart Manufacturing</small>
+      </div>
+    </div>
 
-<section id="about">
-  <h2>About Us</h2>
-  <p><strong>Agni Innovations Pvt Ltd</strong> is a Lucknow-based technology and manufacturing solutions company specializing in digital transformation and automation.</p>
-  <p>Managing Director: <strong>Pratyush Singh</strong></p>
-</section>
+    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
 
-<section>
-  <h2>Client Testimonials</h2>
-  <div class="testimonials">
-    <div class="card">"Agni transformed our factory with automation." – Tata Vendor</div>
-    <div class="card">"Reliable software partner for 5 years." – FinTech Startup</div>
-  </div>
-</section>
+    <nav id="mainNav">
+      <a href="#home" class="active">Home</a>
+      <a href="#services">Services</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#blog">Blog</a>
+      <a href="#careers">Careers</a>
+      <a href="#contact">Contact</a>
+      <button class="theme-toggle" onclick="toggleTheme()">
+        <span>🌗</span> Mode
+      </button>
+      <button class="admin-btn" onclick="openAdminLoginModal()">🛠 Admin</button>
+    </nav>
+  </header>
 
-<section id="contact">
-  <h2>Contact Us</h2>
-  <div class="contact">
-    <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-      <input name="name" placeholder="Your Name" required>
-      <input name="email" placeholder="Your Email" required>
-      <textarea name="message" placeholder="Message"></textarea>
-      <button class="btn">Send Message</button>
-    </form>
-    <div class="card">
-      <p><strong>Agni Innovations Pvt Ltd</strong></p>
-      <p>Lucknow, Uttar Pradesh</p>
-      <p>Email: contact@agniinnovations.in</p>
-      <p>Phone: +91 98765 43210</p>
+  <!-- HERO -->
+  <main id="home">
+    <section class="hero">
+      <div class="hero-text reveal">
+        <div class="hero-badges">
+          <div class="badge hot">New · Industry 4.0 Ready</div>
+          <div class="badge">Based in Lucknow, India 🇮🇳</div>
+        </div>
+
+        <h2>
+          We <span>build software</span> and
+          automate <span>modern factories</span>.
+        </h2>
+        <p class="hero-sub">
+          Agni Innovations Pvt Ltd helps manufacturers, startups, and enterprises ship secure software,
+          connect machines, and move to the cloud with confidence.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#contact" class="btn btn-primary">Start a project →</a>
+          <a href="#portfolio" class="btn btn-ghost">View case studies</a>
+        </div>
+
+        <p class="hero-meta">
+          Trusted by <strong>30+ clients</strong> across manufacturing, logistics, and fintech.
+        </p>
+      </div>
+
+      <aside class="hero-visual reveal">
+        <div class="hero-visual-header">
+          <span>Production Dashboard</span>
+          <span style="font-size:0.75rem;">Live · Last 24h</span>
+        </div>
+        <div class="hero-kpis">
+          <div class="kpi">
+            <div class="kpi-label">Overall Equipment Efficiency</div>
+            <div class="kpi-value" data-counter="87">87%</div>
+            <div class="kpi-label">↑ 12% after automation</div>
+          </div>
+          <div class="kpi">
+            <div class="kpi-label">Downtime Reduction</div>
+            <div class="kpi-value" data-counter="34">34%</div>
+            <div class="kpi-label">IoT alerts & monitoring</div>
+          </div>
+          <div class="kpi">
+            <div class="kpi-label">Deployment Frequency</div>
+            <div class="kpi-value" data-counter="22">22x</div>
+            <div class="kpi-label">per month, DevOps-enabled</div>
+          </div>
+          <div class="kpi">
+            <div class="kpi-label">On-time Delivery</div>
+            <div class="kpi-value" data-counter="98">98%</div>
+            <div class="kpi-label">for critical releases</div>
+          </div>
+        </div>
+        <div class="hero-chip">
+          <span class="hero-dot"></span>
+          Monitoring 12 plants & 45 apps in real time
+        </div>
+      </aside>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services">
+      <div class="section-inner">
+        <h2 class="section-title">What we do</h2>
+        <p class="section-subtitle">
+          A single partner for software engineering, cloud, AI, and smart manufacturing.
+        </p>
+
+        <div class="grid grid-3 reveal">
+          <article class="card">
+            <div class="service-icon">💻</div>
+            <h3>Custom Software & APIs</h3>
+            <p>
+              .NET, Blazor, and modern web apps with secure REST / GraphQL APIs, dashboards, and enterprise integrations.
+            </p>
+            <span class="chip">Tech stack: .NET · SQL · Azure</span>
+          </article>
+
+          <article class="card">
+            <div class="service-icon">☁️</div>
+            <h3>Cloud & DevOps</h3>
+            <p>
+              Azure & AWS hosting, CI/CD pipelines, containerization, monitoring, and cost-optimized cloud architecture.
+            </p>
+            <span class="chip">Certified cloud architects</span>
+          </article>
+
+          <article class="card">
+            <div class="service-icon">🤖</div>
+            <h3>Smart Manufacturing & IoT</h3>
+            <p>
+              PLC/SCADA integrations, IoT sensors, line monitoring, and predictive maintenance dashboards for factories.
+            </p>
+            <span class="chip">Industry 4.0 solutions</span>
+          </article>
+        </div>
+
+        <div class="stats-strip reveal">
+          <div class="stat-pill">
+            <span data-counter="10">10+</span>
+            Years of combined leadership experience
+          </div>
+          <div class="stat-pill">
+            <span data-counter="120">120+</span>
+            Projects delivered across domains
+          </div>
+          <div class="stat-pill">
+            <span data-counter="30">30+</span>
+            Active enterprise & SME clients
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PORTFOLIO -->
+    <section id="portfolio">
+      <div class="section-inner">
+        <h2 class="section-title">Selected work</h2>
+        <p class="section-subtitle">
+          A quick look at how we’ve helped clients modernize operations and products.
+        </p>
+
+        <div class="filter-bar">
+          <button class="filter-btn active" data-filter="all" onclick="filterPortfolio('all')">All</button>
+          <button class="filter-btn" data-filter="software" onclick="filterPortfolio('software')">Software</button>
+          <button class="filter-btn" data-filter="manufacturing" onclick="filterPortfolio('manufacturing')">Manufacturing</button>
+          <button class="filter-btn" data-filter="cloud" onclick="filterPortfolio('cloud')">Cloud & DevOps</button>
+        </div>
+
+        <div class="grid grid-3 reveal" id="portfolioGrid">
+          <article class="card portfolio-item" data-category="software cloud">
+            <h3>Vendor Portal for Auto OEM</h3>
+            <p>
+              Built a secure vendor portal for a Tier-1 automotive supplier with live order tracking, invoicing, and analytics.
+            </p>
+            <div class="portfolio-meta">
+              <span class="portfolio-tag">Tech: ASP.NET Core · Blazor · SQL</span>
+              <a class="link-small" href="#contact">Discuss similar project →</a>
+            </div>
+          </article>
+
+          <article class="card portfolio-item" data-category="manufacturing cloud">
+            <h3>Real-time Production Monitoring</h3>
+            <p>
+              Connected CNC machines and assembly lines to a central dashboard, cutting unplanned downtime by 28%.
+            </p>
+            <div class="portfolio-meta">
+              <span class="portfolio-tag">Tech: IoT · MQTT · Azure IoT Hub</span>
+              <a class="link-small" href="#contact">See architecture</a>
+            </div>
+          </article>
+
+          <article class="card portfolio-item" data-category="software">
+            <h3>Fintech Risk Scoring Engine</h3>
+            <p>
+              Backend services that score loan applications in under 3 seconds with rule engine and ML hooks.
+            </p>
+            <div class="portfolio-meta">
+              <span class="portfolio-tag">Tech: .NET · Redis · Docker</span>
+              <a class="link-small" href="#contact">Ask for case study</a>
+            </div>
+          </article>
+
+          <article class="card portfolio-item" data-category="cloud">
+            <h3>Cloud Migration for ERP</h3>
+            <p>
+              Lift-and-shift plus optimization of legacy ERP to Azure, reducing infra costs by ~35% annually.
+            </p>
+            <div class="portfolio-meta">
+              <span class="portfolio-tag">Tech: Azure · Kubernetes · DevOps</span>
+              <a class="link-small" href="#contact">Plan your migration</a>
+            </div>
+          </article>
+
+          <article class="card portfolio-item" data-category="manufacturing">
+            <h3>Quality Inspection App</h3>
+            <p>
+              Tablet-based app for shop-floor inspection with photo capture, defect tagging, and PDF reports.
+            </p>
+            <div class="portfolio-meta">
+              <span class="portfolio-tag">Tech: PWA · .NET Web API</span>
+              <a class="link-small" href="#contact">Schedule demo</a>
+            </div>
+          </article>
+
+          <article class="card portfolio-item" data-category="software manufacturing">
+            <h3>Warehouse Traceability System</h3>
+            <p>
+              Barcode-based tracking of raw materials and finished goods for a mid-size manufacturing plant.
+            </p>
+            <div class="portfolio-meta">
+              <span class="portfolio-tag">Tech: .NET · APIs · Handheld scanners</span>
+              <a class="link-small" href="#contact">Improve traceability</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- BLOG -->
+    <section id="blog">
+      <div class="section-inner">
+        <h2 class="section-title">From our blog</h2>
+        <p class="section-subtitle">
+          Practical insights from our engineering & manufacturing teams.
+        </p>
+
+        <div class="grid grid-3 reveal">
+          <article class="card blog-card" onclick="openBlog(1)">
+            <div class="blog-meta">Manufacturing · 7 min read</div>
+            <h3>5 Steps to Start Your Industry 4.0 Journey</h3>
+            <p>
+              Not sure where to begin with smart manufacturing? Here’s a step-by-step approach that works in Indian factories.
+            </p>
+            <span class="link-small">Read more →</span>
+          </article>
+
+          <article class="card blog-card" onclick="openBlog(2)">
+            <div class="blog-meta">Cloud & DevOps · 5 min read</div>
+            <h3>Why Your Next .NET App Belongs on Azure</h3>
+            <p>
+              From deployment speed to security, we break down the real benefits of moving .NET workloads to Azure.
+            </p>
+            <span class="link-small">Read more →</span>
+          </article>
+
+          <article class="card blog-card" onclick="openBlog(3)">
+            <div class="blog-meta">Product · 6 min read</div>
+            <h3>Designing Dashboards Operators Actually Use</h3>
+            <p>
+              The UX patterns we rely on when building dashboards for production teams and line supervisors.
+            </p>
+            <span class="link-small">Read more →</span>
+          </article>
+        </div>
+
+        <div class="testimonials-row reveal" style="margin-top:26px;">
+          <article class="card">
+            <div class="testimonial-quote">
+              “Agni Innovations didn’t just deliver software; they understood our plant, our people, and our constraints.
+              Our production review meetings are now driven by real data.”
+            </div>
+            <div class="testimonial-author">
+              – Operations Head, Automotive Components Manufacturer, Uttar Pradesh
+            </div>
+          </article>
+          <article class="card">
+            <h3>Core leadership</h3>
+            <p><strong>Pratyush Singh</strong>, Managing Director</p>
+            <p><strong>Aditi Sharma</strong>, Head of Software Engineering</p>
+            <p><strong>Rahul Verma</strong>, Head of Manufacturing Solutions</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CAREERS -->
+    <section id="careers">
+      <div class="section-inner">
+        <h2 class="section-title">Careers at Agni</h2>
+        <p class="section-subtitle">
+          Join a small, focused team building real-world systems for factories and enterprises.
+        </p>
+
+        <div class="grid grid-2 reveal">
+          <article class="card career-card">
+            <span class="badge-role">Now Hiring</span>
+            <h4>.NET Full Stack Engineer</h4>
+            <div class="career-meta">Lucknow · 2–5 years · Hybrid</div>
+            <p>
+              Build APIs, dashboards, and apps using ASP.NET Core, Blazor, and SQL for manufacturing and fintech clients.
+            </p>
+            <p style="font-size:0.8rem;">
+              Must have: Strong C#, LINQ, REST APIs, basic Azure deployment knowledge.
+            </p>
+            <button class="btn btn-primary" onclick="openCareerApply('NET Full Stack Engineer')">
+              Apply now
+            </button>
+          </article>
+
+          <article class="card career-card">
+            <span class="badge-role">Now Hiring</span>
+            <h4>IoT / Automation Engineer</h4>
+            <div class="career-meta">Lucknow · 1–4 years · On-site</div>
+            <p>
+              Work at shop floors, connect machines, integrate PLC/SCADA, and push data to the cloud dashboards.
+            </p>
+            <p style="font-size:0.8rem;">
+              Must have: PLC basics, industrial networking, basic scripting experience.
+            </p>
+            <button class="btn btn-primary" onclick="openCareerApply('IoT / Automation Engineer')">
+              Apply now
+            </button>
+          </article>
+        </div>
+
+        <div class="card reveal" style="margin-top: 22px;">
+          <h3>Didn’t find a matching role?</h3>
+          <p style="font-size:0.9rem;">
+            We’re always happy to hear from strong engineers, DevOps specialists, and industrial automation professionals.
+            Write to us at <strong>careers@agniinnovations.in</strong> with your CV and a short note on what you’d like to work on.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="section-inner">
+        <h2 class="section-title">Let’s talk</h2>
+        <p class="section-subtitle">
+          Share a brief about your project or plant – we usually respond within 1 business day.
+        </p>
+
+        <div class="contact-layout reveal">
+          <article class="card contact-form">
+            <form id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+              <label for="name">Name</label>
+              <input id="name" name="name" type="text" placeholder="Your name" required />
+
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" placeholder="you@example.com" required />
+
+              <label for="company">Company (optional)</label>
+              <input id="company" name="company" type="text" placeholder="Your company / plant name" />
+
+              <label for="message">Project details</label>
+              <textarea id="message" name="message" rows="4" placeholder="What are you looking to build or improve?" required></textarea>
+
+              <button type="submit" class="btn btn-primary">Send message</button>
+              <div id="formStatus" style="margin-top:8px;font-size:0.83rem;font-weight:600;"></div>
+            </form>
+          </article>
+
+          <article class="card">
+            <h3>Office</h3>
+            <p style="font-size:0.9rem;">
+              Agni Innovations Pvt Ltd<br />
+              Gomti Nagar, Lucknow<br />
+              Uttar Pradesh, India
+            </p>
+            <p style="font-size:0.9rem;">
+              📧 contact@agniinnovations.in<br />
+              ☎️ +91-98765-43210
+            </p>
+            <div class="map-embed" style="margin-top:14px;">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3558.334816592414!2d80.94616631504573!3d26.846693783155695!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x399bfd3f3a6f0001%3A0x2e6fd4e8e0f1de10!2sLucknow%2C%20Uttar%20Pradesh!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+                width="100%" height="230" style="border:0;" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+              </iframe>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ADMIN DASHBOARD (DEMO) -->
+    <section id="admin-section">
+      <div class="section-inner">
+        <span class="admin-banner">
+          ⚠ Demo admin dashboard (front-end only – not for real production use)
+        </span>
+
+        <h2 class="section-title" style="margin-top:10px;">Admin overview</h2>
+        <p class="section-subtitle">
+          At a glance: leads, applications, and project pipeline. This section is only visible once
+          you “log in” using the Admin button.
+        </p>
+
+        <div class="admin-grid reveal">
+          <article class="card">
+            <h3>Pipeline & inquiries</h3>
+            <div style="display:flex;gap:18px;margin-top:6px;margin-bottom:12px;">
+              <div>
+                <div class="admin-metric" data-counter="7">7</div>
+                <div class="admin-metric-label">Active projects</div>
+              </div>
+              <div>
+                <div class="admin-metric" data-counter="14">14</div>
+                <div class="admin-metric-label">New leads this month</div>
+              </div>
+              <div>
+                <div class="admin-metric" data-counter="4">4</div>
+                <div class="admin-metric-label">Proposals in review</div>
+              </div>
+            </div>
+
+            <table>
+              <thead>
+                <tr>
+                  <th>Client</th>
+                  <th>Type</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>AutoParts Co.</td>
+                  <td>Production monitoring</td>
+                  <td><span class="status-pill status-open">In progress</span></td>
+                </tr>
+                <tr>
+                  <td>FinGrow</td>
+                  <td>Fintech API</td>
+                  <td><span class="status-pill status-review">Proposal</span></td>
+                </tr>
+                <tr>
+                  <td>NorthSteel</td>
+                  <td>IoT retrofit</td>
+                  <td><span class="status-pill status-open">Kickoff</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </article>
+
+          <article class="card">
+            <h3>Recent job applications</h3>
+            <table>
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Role</th>
+                  <th>Stage</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Akash Kumar</td>
+                  <td>.NET Full Stack</td>
+                  <td><span class="status-pill status-review">CV review</span></td>
+                </tr>
+                <tr>
+                  <td>Pooja Singh</td>
+                  <td>IoT Engineer</td>
+                  <td><span class="status-pill status-open">Interview</span></td>
+                </tr>
+                <tr>
+                  <td>Ravi Verma</td>
+                  <td>DevOps Engineer</td>
+                  <td><span class="status-pill status-review">Shortlisted</span></td>
+                </tr>
+              </tbody>
+            </table>
+            <p style="font-size:0.8rem;margin-top:10px;color:var(--muted);">
+              In a real system, this dashboard would be connected to your CRM / ATS and secured with proper authentication.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    © 2025 Agni Innovations Pvt Ltd · All rights reserved · Made in Lucknow
+  </footer>
+
+  <!-- WHATSAPP FLOAT -->
+  <a href="https://wa.me/919876543210?text=Hi%20Agni%20Innovations%2C%20I%27d%20like%20to%20discuss%20a%20project."
+     class="whatsapp" target="_blank" rel="noopener">
+    <span>💬</span> Chat on WhatsApp
+  </a>
+
+  <!-- BLOG MODAL -->
+  <div class="modal" id="blogModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 id="blogModalTitle">Blog title</h3>
+        <button class="modal-close" onclick="closeBlogModal()">&times;</button>
+      </div>
+      <div class="modal-body" id="blogModalBody"></div>
+      <div class="modal-footer">
+        For full articles, write to <strong>contact@agniinnovations.in</strong>
+      </div>
     </div>
   </div>
-</section>
 
-<footer>
-  © 2025 Agni Innovations Pvt Ltd | All Rights Reserved
-</footer>
+  <!-- CAREER APPLY MODAL -->
+  <div class="modal" id="careerModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 id="careerModalTitle">Apply for role</h3>
+        <button class="modal-close" onclick="closeCareerModal()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p style="font-size:0.85rem;margin-bottom:8px;">
+          Fill this short form and we’ll get back to you if there’s a match.
+        </p>
+        <form id="careerForm" class="career-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+          <input type="hidden" id="careerRole" name="applied_role" value="">
+          <label for="candidateName">Name</label>
+          <input id="candidateName" name="name" type="text" placeholder="Your name" required />
 
-<a href="https://wa.me/919876543210" class="whatsapp">💬 WhatsApp</a>
+          <label for="candidateEmail">Email</label>
+          <input id="candidateEmail" name="email" type="email" placeholder="you@example.com" required />
 
-<script>
-function toggleMenu() {
-  document.getElementById("menu").classList.toggle("show");
-}
-function toggleTheme() {
-  document.body.dataset.theme =
-    document.body.dataset.theme === "dark" ? "" : "dark";
-}
-</script>
+          <label for="candidateExp">Experience (years)</label>
+          <input id="candidateExp" name="experience" type="number" min="0" step="0.5" placeholder="e.g. 2.5" required />
 
+          <label for="candidateResume">Resume link (Drive / LinkedIn)</label>
+          <input id="candidateResume" name="resume_link" type="url" placeholder="Paste URL" required />
+
+          <label for="candidateNote">Short note</label>
+          <textarea id="candidateNote" name="note" rows="3" placeholder="Tell us in 2–3 lines why you’d like to join." required></textarea>
+
+          <button type="submit" class="btn btn-primary">Submit application</button>
+          <div id="careerStatus" style="margin-top:8px;font-size:0.83rem;font-weight:600;"></div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- ADMIN LOGIN MODAL -->
+  <div class="modal" id="adminLoginModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Admin access (demo)</h3>
+        <button class="modal-close" onclick="closeAdminLoginModal()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p style="font-size:0.85rem;">
+          This is a <strong>front-end only</strong> demo dashboard. Enter the demo password to reveal the admin section.
+        </p>
+        <label for="adminPassword" style="font-size:0.85rem;font-weight:600;">Password</label>
+        <input id="adminPassword" type="password" placeholder="Demo password" style="width:100%;padding:8px 10px;border-radius:8px;border:1px solid rgba(148,163,184,0.7);margin-top:4px;">
+        <button class="btn btn-primary" style="margin-top:10px;" onclick="handleAdminLogin()">Unlock admin view</button>
+        <p style="font-size:0.75rem;color:var(--muted);margin-top:8px;">
+          Demo password (for you to test): <strong>admin2025</strong>
+        </p>
+        <div id="adminLoginStatus" style="margin-top:8px;font-size:0.83rem;font-weight:600;"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JAVASCRIPT -->
+  <script>
+    // THEME
+    const userTheme = localStorage.getItem("agni-theme");
+    if (userTheme === "dark") {
+      document.body.setAttribute("data-theme", "dark");
+    }
+
+    function toggleTheme() {
+      const current = document.body.getAttribute("data-theme");
+      if (current === "dark") {
+        document.body.removeAttribute("data-theme");
+        localStorage.setItem("agni-theme", "light");
+      } else {
+        document.body.setAttribute("data-theme", "dark");
+        localStorage.setItem("agni-theme", "dark");
+      }
+    }
+
+    // MOBILE MENU
+    function toggleMenu() {
+      document.getElementById("mainNav").classList.toggle("show");
+    }
+
+    // PRELOADER
+    window.addEventListener("load", () => {
+      const pre = document.getElementById("preloader");
+      setTimeout(() => {
+        pre.classList.add("hide");
+        startCounters();
+      }, 700);
+    });
+
+    // NAV ACTIVE HIGHLIGHT
+    document.addEventListener("scroll", () => {
+      const sections = document.querySelectorAll("section[id]");
+      const navLinks = document.querySelectorAll("nav a[href^='#']");
+      let currentId = "";
+      const scrollPos = window.scrollY + 120;
+
+      sections.forEach(sec => {
+        if (scrollPos >= sec.offsetTop && scrollPos < sec.offsetTop + sec.offsetHeight) {
+          currentId = sec.getAttribute("id");
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.classList.remove("active");
+        if (link.getAttribute("href") === "#" + currentId) {
+          link.classList.add("active");
+        }
+      });
+    });
+
+    // INTERSECTION OBSERVER FOR REVEAL
+    const observer = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+
+    // COUNTERS
+    function startCounters() {
+      const counters = document.querySelectorAll("[data-counter]");
+      counters.forEach(counter => {
+        const target = parseInt(counter.getAttribute("data-counter"), 10);
+        let current = 0;
+        const increment = Math.max(1, Math.floor(target / 40));
+        const timer = setInterval(() => {
+          current += increment;
+          if (current >= target) {
+            current = target;
+            clearInterval(timer);
+          }
+          counter.textContent = counter.textContent.includes("%")
+            ? current + "%"
+            : counter.textContent.endsWith("+")
+            ? current + "+"
+            : current;
+        }, 30);
+      });
+    }
+
+    // PORTFOLIO FILTER
+    function filterPortfolio(category) {
+      const buttons = document.querySelectorAll(".filter-btn");
+      buttons.forEach(btn => {
+        btn.classList.toggle("active", btn.getAttribute("data-filter") === category);
+      });
+
+      const items = document.querySelectorAll(".portfolio-item");
+      items.forEach(item => {
+        const itemCats = item.getAttribute("data-category").split(" ");
+        if (category === "all" || itemCats.includes(category)) {
+          item.style.display = "block";
+        } else {
+          item.style.display = "none";
+        }
+      });
+    }
+
+    // BLOG MODAL
+    const blogData = {
+      1: {
+        title: "5 Steps to Start Your Industry 4.0 Journey",
+        body: `
+          <p>Industry 4.0 doesn't mean replacing every machine overnight. For most plants we work with,
+          the journey starts with small, low-risk pilots and quick wins.</p>
+          <p><strong>Step 1:</strong> Map your critical lines and bottlenecks.<br/>
+          <strong>Step 2:</strong> Add basic sensing and connectivity (OEE, downtime reasons).<br/>
+          <strong>Step 3:</strong> Build one dashboard your team will actually use every day.<br/>
+          <strong>Step 4:</strong> Introduce alerting and simple automations.<br/>
+          <strong>Step 5:</strong> Expand to more lines once the team is confident.</p>
+          <p>If you’d like, we can quickly evaluate which line in your plant is the best candidate for a pilot.</p>
+        `
+      },
+      2: {
+        title: "Why Your Next .NET App Belongs on Azure",
+        body: `
+          <p>Azure and .NET are built to work together. That means better tooling, easier deployments,
+          and first-class support for security and monitoring.</p>
+          <p>We typically use:</p>
+          <ul>
+            <li>Azure App Service or Containers for hosting</li>
+            <li>Azure SQL / Cosmos DB for data</li>
+            <li>Azure Monitor & Application Insights for logs</li>
+            <li>Azure DevOps / GitHub Actions for CI/CD</li>
+          </ul>
+          <p>This keeps your infrastructure simple, observable, and ready to scale as usage grows.</p>
+        `
+      },
+      3: {
+        title: "Designing Dashboards Operators Actually Use",
+        body: `
+          <p>A beautiful dashboard that nobody looks at is just wall art. For production teams,
+          we prioritize clarity, speed, and “what needs my attention now?”.</p>
+          <p>Some rules we follow:</p>
+          <ul>
+            <li>Show current status first, history second.</li>
+            <li>Use color sparingly so warnings stand out.</li>
+            <li>Optimize for large shop-floor screens & low-light rooms.</li>
+            <li>Keep drill-downs simple and predictable.</li>
+          </ul>
+          <p>The result: supervisors can understand the plant in one glance instead of ten reports.</p>
+        `
+      }
+    };
+
+    function openBlog(id) {
+      const modal = document.getElementById("blogModal");
+      const data = blogData[id];
+      if (!data) return;
+      document.getElementById("blogModalTitle").innerText = data.title;
+      document.getElementById("blogModalBody").innerHTML = data.body;
+      modal.classList.add("show");
+    }
+
+    function closeBlogModal() {
+      document.getElementById("blogModal").classList.remove("show");
+    }
+
+    // CAREER APPLY MODAL
+    function openCareerApply(roleName) {
+      document.getElementById("careerRole").value = roleName;
+      document.getElementById("careerModalTitle").innerText = "Apply – " + roleName;
+      document.getElementById("careerStatus").innerText = "";
+      document.getElementById("careerModal").classList.add("show");
+    }
+
+    function closeCareerModal() {
+      document.getElementById("careerModal").classList.remove("show");
+    }
+
+    // CAREER FORM SUBMISSION
+    document.getElementById("careerForm").addEventListener("submit", async function(e) {
+      e.preventDefault();
+      const form = e.target;
+      const status = document.getElementById("careerStatus");
+      const data = new FormData(form);
+
+      status.textContent = "Submitting...";
+      try {
+        const response = await fetch(form.action, {
+          method: form.method,
+          body: data,
+          headers: { "Accept": "application/json" }
+        });
+        if (response.ok) {
+          status.textContent = "✅ Application submitted. Thank you!";
+          status.style.color = "green";
+          form.reset();
+        } else {
+          status.textContent = "❌ Something went wrong. Please try again.";
+          status.style.color = "red";
+        }
+      } catch (err) {
+        status.textContent = "❌ Network error. Please try again.";
+        status.style.color = "red";
+      }
+    });
+
+    // CONTACT FORM SUBMISSION
+    document.getElementById("contactForm").addEventListener("submit", async function(e) {
+      e.preventDefault();
+      const form = e.target;
+      const status = document.getElementById("formStatus");
+      const data = new FormData(form);
+
+      status.textContent = "Sending...";
+      try {
+        const response = await fetch(form.action, {
+          method: form.method,
+          body: data,
+          headers: { "Accept": "application/json" }
+        });
+        if (response.ok) {
+          status.textContent = "✅ Your message has been sent successfully!";
+          status.style.color = "green";
+          form.reset();
+        } else {
+          status.textContent = "❌ Something went wrong. Please try again.";
+          status.style.color = "red";
+        }
+      } catch (err) {
+        status.textContent = "❌ Network error. Please try again.";
+        status.style.color = "red";
+      }
+    });
+
+    // CLOSE MODALS ON BACKDROP CLICK
+    document.querySelectorAll(".modal").forEach(modal => {
+      modal.addEventListener("click", e => {
+        if (e.target === modal) {
+          modal.classList.remove("show");
+        }
+      });
+    });
+
+    // ADMIN LOGIN (DEMO ONLY)
+    let adminUnlocked = false;
+
+    function openAdminLoginModal() {
+      document.getElementById("adminLoginStatus").textContent = "";
+      document.getElementById("adminPassword").value = "";
+      document.getElementById("adminLoginModal").classList.add("show");
+    }
+
+    function closeAdminLoginModal() {
+      document.getElementById("adminLoginModal").classList.remove("show");
+    }
+
+    function handleAdminLogin() {
+      const input = document.getElementById("adminPassword").value;
+      const status = document.getElementById("adminLoginStatus");
+      if (input === "admin2025") {
+        adminUnlocked = true;
+        document.getElementById("admin-section").classList.add("visible");
+        status.textContent = "✅ Admin dashboard unlocked (demo). Scroll down to view.";
+        status.style.color = "green";
+        closeAdminLoginModal();
+        document.getElementById("admin-section").scrollIntoView({ behavior: "smooth" });
+      } else {
+        status.textContent = "❌ Incorrect password (hint is shown above).";
+        status.style.color = "red";
+      }
+    }
+  </script>
 </body>
 </html>
