@@ -1,10 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Agni Innovations | Software & Manufacturing</title>
+
   <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       font-family: 'Segoe UI', Arial, sans-serif;
       margin: 0;
@@ -12,6 +17,7 @@
       background: #F9FAFB;
       color: #334155;
     }
+
     header {
       background: #0A192F;
       color: #F9FAFB;
@@ -19,12 +25,17 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
     }
+
     .branding {
       display: flex;
       align-items: center;
       gap: 15px;
     }
+
     .branding h1 {
       margin: 0;
       font-size: 2em;
@@ -34,6 +45,7 @@
       align-items: center;
       gap: 10px;
     }
+
     .ai-box {
       font-size: 1em;
       padding: 8px 14px;
@@ -42,8 +54,9 @@
       border-radius: 6px;
       font-weight: bold;
       letter-spacing: 1px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
     }
+
     nav a {
       color: #F4A261;
       text-decoration: none;
@@ -51,12 +64,14 @@
       font-weight: 600;
       transition: color 0.3s ease;
     }
+
     nav a:hover {
       color: #E9C46A;
     }
+
     .hero {
-      background: linear-gradient(rgba(10,25,47,0.7), rgba(10,25,47,0.7)), 
-                  url('banner.jpg') no-repeat center center/cover;
+      background: linear-gradient(rgba(10, 25, 47, 0.7), rgba(10, 25, 47, 0.7)),
+        url('banner.jpg') no-repeat center center/cover;
       height: 420px;
       display: flex;
       align-items: center;
@@ -64,20 +79,30 @@
       color: #F9FAFB;
       text-align: center;
     }
+
     .hero h2 {
       font-size: 2.6em;
       max-width: 700px;
       line-height: 1.4;
     }
+
     section {
       padding: 50px 20px;
       text-align: center;
     }
+
     section h2 {
       color: #0A192F;
       font-size: 2em;
       margin-bottom: 15px;
     }
+
+    section p {
+      max-width: 800px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
     .services {
       display: flex;
       justify-content: center;
@@ -85,112 +110,238 @@
       gap: 25px;
       margin-top: 30px;
     }
+
     .service {
       background: #fff;
       padding: 25px;
       border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
       width: 300px;
       transition: transform 0.3s ease;
     }
+
     .service:hover {
       transform: translateY(-8px);
     }
+
     .service h3 {
       color: #F4A261;
       margin-bottom: 12px;
     }
-    #about {
-      background: #F9FAFB;
-      padding: 60px 20px;
-    }
-    #about h2 {
-      color: #0A192F;
-      text-align: center;
-      margin-bottom: 25px;
-    }
+
     #about div {
       max-width: 800px;
       margin: auto;
       text-align: left;
       line-height: 1.8;
     }
+
     #about ul {
       list-style: none;
       padding-left: 0;
     }
+
     #about li {
       margin: 8px 0;
     }
+
+    .contact-wrapper {
+      max-width: 900px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.3fr 1fr;
+      gap: 40px;
+      align-items: flex-start;
+    }
+
+    .contact-form {
+      background: #ffffff;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      text-align: left;
+    }
+
+    .contact-form label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: 600;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 10px 12px;
+      margin-bottom: 15px;
+      border-radius: 6px;
+      border: 1px solid #cbd5f5;
+      font-family: inherit;
+      font-size: 0.95em;
+    }
+
+    .contact-form button {
+      background: #F4A261;
+      color: #0A192F;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .contact-form button:hover {
+      background: #E9C46A;
+    }
+
+    .contact-info {
+      text-align: left;
+    }
+
+    .contact-info h3 {
+      color: #F4A261;
+      margin-bottom: 10px;
+    }
+
+    .map-embed {
+      margin-top: 20px;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+
     footer {
       background: #0A192F;
       color: #F9FAFB;
       text-align: center;
       padding: 20px;
       font-size: 0.9em;
+      margin-top: 40px;
     }
   </style>
 </head>
+
 <body>
+
+  <!-- HEADER -->
   <header>
     <div class="branding">
       <span class="ai-box">AI</span>
       <h1>Agni Innovations</h1>
     </div>
     <nav>
-      <a href="#">Home</a>
+      <a href="#home">Home</a>
       <a href="#about">About Us</a>
-      <a href="#">Services</a>
-      <a href="#">Contact</a>
+      <a href="#services">Services</a>
+      <a href="#contact">Contact</a>
     </nav>
   </header>
 
-  <div class="hero">
+  <!-- HERO -->
+  <div class="hero" id="home">
     <h2>Igniting Ideas in Software & Manufacturing Excellence</h2>
   </div>
 
+  <!-- WELCOME -->
   <section>
     <h2>Welcome to Agni Innovations</h2>
-    <p>We blend cutting-edge software development with advanced manufacturing expertise to deliver solutions 
-       that transform industries and empower businesses worldwide.</p>
+    <p>
+      We blend cutting-edge software development with advanced manufacturing expertise to deliver
+      solutions that transform industries and empower businesses worldwide.
+    </p>
   </section>
 
-  <section class="services">
-    <div class="service">
-      <h3>💻 Software Solutions</h3>
-      <p>Custom applications, enterprise systems, and digital platforms designed for modern business needs.</p>
-    </div>
-    <div class="service">
-      <h3>🏭 Manufacturing Excellence</h3>
-      <p>Precision engineering, smart automation, and sustainable production for the future of industry.</p>
-    </div>
-    <div class="service">
-      <h3>🔗 Innovation & Integration</h3>
-      <p>Seamless integration of software and manufacturing processes to create holistic solutions.</p>
+  <!-- SERVICES -->
+  <section id="services">
+    <h2>Our Services</h2>
+
+    <div class="services">
+      <div class="service">
+        <h3>💻 Software Solutions</h3>
+        <p>Custom applications, enterprise systems, and digital platforms designed for modern business needs.</p>
+      </div>
+
+      <div class="service">
+        <h3>🏭 Manufacturing Excellence</h3>
+        <p>Precision engineering, smart automation, and sustainable production for the future of industry.</p>
+      </div>
+
+      <div class="service">
+        <h3>🔗 Innovation & Integration</h3>
+        <p>Seamless integration of software and manufacturing processes to create holistic solutions.</p>
+      </div>
     </div>
   </section>
 
+  <!-- ABOUT -->
   <section id="about">
     <h2>About Us</h2>
     <div>
-      <p><strong>Agni Innovations</strong> is guided by <strong>Pratyush Manjul Singh</strong>, our dedicated Manager, 
-         who brings vision, leadership, and a passion for innovation. With her expertise, the company has grown 
-         into a trusted name in both <em>software development</em> and <em>manufacturing excellence</em>.</p>
-      
-      <p>As Manager, Pratyush ensures that Agni Innovations focuses on:</p>
+      <p>
+        <strong>Agni Innovations</strong> is guided by
+        <strong>Pratyush Manjul Singh</strong>, our dedicated Manager, who brings vision, leadership,
+        and a passion for innovation.
+      </p>
+
+      <p>We focus on:</p>
       <ul>
-        <li>💡 Delivering cutting-edge software solutions for businesses worldwide</li>
-        <li>🏭 Driving sustainable and smart manufacturing practices</li>
-        <li>🌍 Creating integrated systems that empower industries to thrive in the digital age</li>
+        <li>💡 Cutting-edge software solutions</li>
+        <li>🏭 Smart and sustainable manufacturing</li>
+        <li>🌍 Integrated digital transformation</li>
       </ul>
-      
-      <p>Her leadership continues to ignite ideas and transform them into impactful solutions that 
-         shape the future of technology and industry.</p>
+
+      <p>
+        Her leadership continues to ignite ideas and transform them into impactful solutions that
+        shape the future of technology and industry.
+      </p>
     </div>
   </section>
 
+  <!-- CONTACT -->
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <p>Reach out to our team for collaborations, projects, or inquiries.</p>
+
+    <div class="contact-wrapper">
+      <div class="contact-form">
+        <h3>Send us a message</h3>
+
+        <form action="#" method="post">
+          <label>Name</label>
+          <input type="text" placeholder="Your Name" required />
+
+          <label>Email</label>
+          <input type="email" placeholder="you@example.com" required />
+
+          <label>Message</label>
+          <textarea rows="5" placeholder="Your message..." required></textarea>
+
+          <button type="submit">Submit (Demo Only)</button>
+        </form>
+      </div>
+
+      <div class="contact-info">
+        <h3>Our Details</h3>
+        <p><strong>Agni Innovations</strong></p>
+        <p>Dummy Address Line 1</p>
+        <p>Gomti Nagar, Lucknow, Uttar Pradesh</p>
+        <p>Email: info@agni-innovations.com</p>
+        <p>Phone: +91-98765-43210</p>
+
+        <div class="map-embed">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3558.334816592414!2d80.94616631504573!3d26.846693783155695!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x399bfd3f3a6f0001%3A0x2e6fd4e8e0f1de10!2sLucknow%2C%20Uttar%20Pradesh!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+            width="100%" height="250" style="border:0;" loading="lazy">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
   <footer>
     <p>&copy; 2025 Agni Innovations. All Rights Reserved.</p>
   </footer>
+
 </body>
 </html>
